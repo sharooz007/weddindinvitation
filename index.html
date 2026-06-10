@@ -476,7 +476,7 @@ if (petalsOn){
   var ctx = canvas.getContext("2d");
   var DPR = Math.min(window.devicePixelRatio || 1, 2);
   var W, H, petals = [];
-  var COLORS = ["#E7C9A2","#E2B48C","#D9A87E","#EFD9B5","#DCBE92"];
+  var COLORS = ["#E7C9A2","#E2B48C","#D9A87E","#EFD9B5","#DCBE92","#F0D5B0"];
   function sizeCanvas(){
     var r = canvas.getBoundingClientRect();
     W = r.width || window.innerWidth;
@@ -485,45 +485,82 @@ if (petalsOn){
     ctx.setTransform(DPR,0,0,DPR,0,0);
   }
   function mkPetal(seedTop){
+    var s = 4.5 + Math.random() * 7;
     return {
       x: Math.random() * W,
-      y: seedTop ? Math.random() * H : -20 - Math.random() * 60,
-      s: 5 + Math.random() * 7,
-      vy: 0.35 + Math.random() * 0.55,
-      ph: Math.random() * Math.PI * 2,
-      sw: 16 + Math.random() * 26,
-      sws: 0.004 + Math.random() * 0.006,
+      y: seedTop ? Math.random() * H : -30 - Math.random() * 100,
+      s: s,
+      /* leaf shape variation: how pinched and how asymmetric */
+      asp: 0.55 + Math.random() * 0.55,   /* width:height ratio */
+      skew: (Math.random() - 0.5) * 0.35, /* slight left/right lean */
+      /* base fall speed, with slow drift */
+      vy: 0.3 + Math.random() * 0.45,
+      vyDrift: 0,
+      /* compound horizontal oscillation — two sine waves */
+      ph1: Math.random() * Math.PI * 2,
+      sw1: 10 + Math.random() * 22,
+      sp1: 0.003 + Math.random() * 0.005,
+      ph2: Math.random() * Math.PI * 2,
+      sw2: 3 + Math.random() * 9,
+      sp2: 0.014 + Math.random() * 0.018,
+      /* slow persistent horizontal drift (wind) */
+      vx: (Math.random() - 0.5) * 0.18,
       rot: Math.random() * Math.PI * 2,
-      vr: (Math.random() - .5) * 0.014,
+      vr: (Math.random() - 0.5) * 0.016,
+      /* flutter: rotation sign flips occasionally */
+      flipTick: 0,
+      flipNext: 60 + (Math.random() * 220 | 0),
       c: COLORS[(Math.random() * COLORS.length) | 0],
-      a: 0.35 + Math.random() * 0.3
+      a: 0.28 + Math.random() * 0.32
     };
   }
   sizeCanvas();
-  for (var i = 0; i < 14; i++) petals.push(mkPetal(true));
+  for (var i = 0; i < 16; i++) petals.push(mkPetal(true));
   window.addEventListener("resize", sizeCanvas);
-  (function loop(){
+  var last = 0;
+  (function loop(ts){
     requestAnimationFrame(loop);
     if (document.hidden) return;
-    ctx.clearRect(0,0,W,H);
+    /* cap delta so a hidden tab waking up doesn't lurch */
+    var dt = Math.min((ts - last) / 16.67, 2.5); last = ts;
+    ctx.clearRect(0, 0, W, H);
     for (var i = 0; i < petals.length; i++){
       var p = petals[i];
-      p.y += p.vy; p.ph += p.sws * 16.7; p.rot += p.vr;
-      var x = p.x + Math.sin(p.ph) * p.sw;
-      if (p.y > H + 30) petals[i] = p = mkPetal(false);
+      /* advance phases */
+      p.ph1 += p.sp1 * dt;
+      p.ph2 += p.sp2 * dt;
+      /* compound sway + persistent drift */
+      var swayX = Math.sin(p.ph1) * p.sw1 + Math.sin(p.ph2) * p.sw2;
+      p.x += (p.vx + swayX * 0.022) * dt; /* tiny direct x contribution from sway */
+      /* fall with micro-turbulence */
+      p.vyDrift += (Math.random() - 0.5) * 0.008;
+      p.vyDrift *= 0.97;
+      p.y += (p.vy + p.vyDrift) * dt;
+      /* flutter: flip rotation direction and slightly rescale it */
+      p.flipTick += dt;
+      if (p.flipTick >= p.flipNext){
+        p.vr = -(p.vr * (0.5 + Math.random() * 0.7));
+        p.flipTick = 0;
+        p.flipNext = 60 + (Math.random() * 220 | 0);
+      }
+      p.rot += p.vr * dt;
+      if (p.y > H + 40 || p.x < -60 || p.x > W + 60) petals[i] = p = mkPetal(false);
+      /* draw */
       ctx.save();
-      ctx.translate(x, p.y);
-      ctx.rotate(p.rot + Math.sin(p.ph) * 0.4);
+      ctx.translate(p.x + swayX, p.y);
+      ctx.rotate(p.rot);
+      ctx.scale(p.asp, 1);
       ctx.globalAlpha = p.a;
       ctx.fillStyle = p.c;
+      var s = p.s, sk = p.skew;
       ctx.beginPath();
-      ctx.moveTo(0, -p.s);
-      ctx.bezierCurveTo(p.s * .85, -p.s * .55, p.s * .7, p.s * .6, 0, p.s);
-      ctx.bezierCurveTo(-p.s * .7, p.s * .6, -p.s * .85, -p.s * .55, 0, -p.s);
+      ctx.moveTo(sk * s, -s);
+      ctx.bezierCurveTo(s * 0.9 + sk * s, -s * 0.5, s * 0.75 + sk * s, s * 0.55, 0, s);
+      ctx.bezierCurveTo(-s * 0.75 + sk * s, s * 0.55, -s * 0.9 + sk * s, -s * 0.5, sk * s, -s);
       ctx.fill();
       ctx.restore();
     }
-  })();
+  })(0);
 }
 
 /* ---------- stars in dua section ---------- */
