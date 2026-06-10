@@ -1,0 +1,15 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.3">
+  <!-- Central 8-pointed star -->
+  <path d="M60,10 L70,40 L100,30 L80,55 L110,60 L80,65 L100,90 L70,80 L60,110 L50,80 L20,90 L40,65 L10,60 L40,55 L20,30 L50,40 Z" />
+  <!-- Corner pieces to complete the tile -->
+  <path d="M0,10 L10,40 L40,30 L20,55 L-10,60" />
+  <path d="M120,10 L110,40 L80,30 L100,55 L130,60" />
+  <path d="M0,110 L10,80 L40,90 L20,65 L-10,60" />
+  <path d="M120,110 L110,80 L80,90 L100,65 L130,60" />
+  
+  <!-- Outer connecting lines -->
+  <line x1="60" y1="0" x2="60" y2="10" />
+  <line x1="60" y1="110" x2="60" y2="120" />
+  <line x1="0" y1="60" x2="10" y2="60" />
+  <line x1="110" y1="60" x2="120" y2="60" />
+</svg>

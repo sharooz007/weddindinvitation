@@ -6,14 +6,14 @@
 <title>Haseeb &amp; Jalala — Wedding Invitation</title>
 <meta name="theme-color" content="#F6EDDC">
 <meta property="og:title" content="Mohammed Haseeb & Jalala Thasneem — Wedding Invitation">
-<meta property="og:description" content="You're invited · Sunday, July 12 2026 · Nikkah 11:30 AM · Seethangoli Alliance Hall">
+<meta property="og:description" content="You're invited · Sunday, July 12 2026 · Nikkah 11:30 AM · Alliance Convention Center">
 <meta property="og:type" content="website">
-<meta property="og:image" content="og.png">
+<meta property="og:image" content="og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Wedding invitation — Haseeb & Jalala, July 12 2026">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="og.png">
+<meta name="twitter:image" content="og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Imperial+Script&family=Marcellus&display=swap" rel="stylesheet">
@@ -48,6 +48,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 body.locked{overflow:hidden;height:100svh}
+
 
 /* ---------- atmosphere layers ---------- */
 .atmo{
@@ -136,10 +137,10 @@ section{position:relative;padding:0 28px}
 .amp-row .wing{color:var(--leaf);opacity:.6}
 .amp{font-family:'Imperial Script',cursive;font-size:64px;color:var(--peach);line-height:1}
 .blessing{font-style:italic;font-size:16.5px;line-height:1.8;color:var(--ink-soft);margin-top:44px;padding:0 12px;text-wrap:pretty}
-.flor{position:absolute;pointer-events:none;will-change:transform}
-.flor svg{display:block;width:100%;height:auto}
-.flor-l{left:-54px;top:120px;width:150px}
-.flor-r{right:-58px;bottom:60px;width:170px}
+.bloom{position:absolute;pointer-events:none;will-change:transform}
+.bloom svg{display:block;width:100%;height:auto;overflow:visible}
+.bloom-l{left:-10px;top:100px;width:100px}
+.bloom-r{right:-10px;top:250px;width:100px}
 
 /* ---------- countdown ---------- */
 .count{padding-top:30px;padding-bottom:104px;text-align:center}
@@ -268,8 +269,8 @@ section{position:relative;padding:0 28px}
   <section class="hero" id="hero">
     <div class="hero-inner">
       <svg class="arch" viewBox="0 0 360 600" fill="none" aria-hidden="true">
-        <path class="arch-line" d="M30 600 V230 C30 130 72 88 122 64 C152 50 168 42 180 18 C192 42 208 50 238 64 C288 88 330 130 330 230 V600" stroke="currentColor" stroke-width="1.5"/>
-        <path class="arch-line" d="M42 600 V234 C42 142 80 100 128 76 C156 62 170 54 180 34 C190 54 204 62 232 76 C280 100 318 142 318 234 V600" stroke="currentColor" stroke-width=".7" opacity=".5"/>
+        <path class="arch-line" d="M30 600 V230 C30 130 72 88 122 64 C152 50 168 42 180 18 C192 42 208 50 238 64 C288 88 330 130 330 230 V600 Z" stroke="currentColor" stroke-width="1.5"/>
+        <path class="arch-line" d="M42 600 V234 C42 142 80 100 128 76 C156 62 170 54 180 34 C190 54 204 62 232 76 C280 100 318 142 318 234 V600 Z" stroke="currentColor" stroke-width=".7" opacity=".5"/>
         <path class="arch-finial" d="M180 0 L186 9 L180 18 L174 9 Z" fill="currentColor" opacity=".9"/>
       </svg>
       <div class="hero-content">
@@ -288,66 +289,24 @@ section{position:relative;padding:0 28px}
 
   <!-- ============ NAMES ============ -->
   <section class="names" id="names">
-    <div class="flor flor-l" data-speed="-40">
-      <svg viewBox="0 0 150 190" fill="none" aria-hidden="true">
-        <defs>
-          <radialGradient id="rg1" cx="50%" cy="42%" r="60%">
-            <stop offset="0%" stop-color="#F0CFA8"/><stop offset="55%" stop-color="#E2AE82"/><stop offset="100%" stop-color="#D08F62"/>
-          </radialGradient>
-          <filter id="soft1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.4"/></filter>
-        </defs>
-        <g opacity=".88">
-          <path d="M60 120 C30 100 18 70 22 38" stroke="#9A9268" stroke-width="1.3"/>
-          <path d="M52 132 C28 130 10 116 2 96" stroke="#9A9268" stroke-width="1.1"/>
-          <ellipse cx="36" cy="74" rx="14" ry="6" fill="#9A9268" opacity=".55" transform="rotate(-52 36 74)"/>
-          <ellipse cx="20" cy="110" rx="13" ry="5.5" fill="#8A8258" opacity=".5" transform="rotate(-18 20 110)"/>
-          <circle cx="24" cy="34" r="3" fill="#EFDCB2" opacity=".9"/>
-          <circle cx="14" cy="48" r="2.2" fill="#EFDCB2" opacity=".75"/>
-          <circle cx="33" cy="22" r="2.4" fill="#EFDCB2" opacity=".8"/>
-          <circle cx="8" cy="30" r="1.8" fill="#EFDCB2" opacity=".6"/>
-          <g filter="url(#soft1)">
-            <circle cx="78" cy="140" r="34" fill="url(#rg1)"/>
-            <path d="M78 110 C96 116 104 132 96 150 C112 144 116 124 104 112" fill="#DCA274" opacity=".7"/>
-            <path d="M78 170 C60 164 52 148 60 130 C44 136 40 156 52 168" fill="#E7BD93" opacity=".75"/>
-            <path d="M62 126 C76 116 94 120 100 136 C98 118 80 108 64 116" fill="#E2AE82" opacity=".6"/>
-            <path d="M94 154 C80 164 62 160 56 144 C58 162 76 172 92 164" fill="#D89A6B" opacity=".6"/>
-            <path d="M70 132 C80 124 92 128 95 140 C94 128 82 120 71 126" fill="#CE8A5C" opacity=".7"/>
-            <path d="M86 148 C76 156 64 152 61 140 C62 152 74 160 85 154" fill="#C97F50" opacity=".7"/>
-            <path d="M78 134 C84 132 89 136 89 142 C89 147 84 150 79 149 C74 148 71 143 73 138 C75 134 78 134 78 134" fill="#B96A3E" opacity=".75"/>
-          </g>
-          <ellipse cx="116" cy="118" rx="15" ry="6.5" fill="#9A9268" opacity=".5" transform="rotate(34 116 118)"/>
-        </g>
+    <div class="bloom bloom-l" aria-hidden="true">
+      <svg viewBox="0 0 100 250" fill="none">
+        <path class="bloom-stem" d="M30 250 Q20 180 50 120 T70 20" stroke="var(--gold-soft)" stroke-width="1.2" stroke-linecap="round"/>
+        <path class="bloom-petal" d="M45 130 C20 120 10 140 25 155 C45 150 55 135 45 130 Z" fill="var(--peach-soft)" />
+        <path class="bloom-petal" d="M60 80 C85 65 90 90 75 105 C55 100 50 85 60 80 Z" fill="var(--peach)" />
+        <path class="bloom-petal" d="M30 60 C10 40 10 70 25 80 C40 70 45 50 30 60 Z" fill="var(--leaf)" opacity="0.7" />
+        <circle class="bloom-dot" cx="35" cy="142" r="2.5" fill="var(--gold)" />
+        <circle class="bloom-dot" cx="68" cy="90" r="2.5" fill="var(--gold)" />
       </svg>
     </div>
-    <div class="flor flor-r" data-speed="34">
-      <svg viewBox="0 0 170 200" fill="none" aria-hidden="true">
-        <defs>
-          <radialGradient id="rg2" cx="50%" cy="42%" r="60%">
-            <stop offset="0%" stop-color="#F4DDBC"/><stop offset="55%" stop-color="#E9BE92"/><stop offset="100%" stop-color="#D89A6B"/>
-          </radialGradient>
-          <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.4"/></filter>
-        </defs>
-        <g opacity=".88">
-          <path d="M96 96 C128 80 146 54 148 22" stroke="#9A9268" stroke-width="1.3"/>
-          <path d="M106 110 C136 108 156 92 166 70" stroke="#9A9268" stroke-width="1.1"/>
-          <ellipse cx="128" cy="58" rx="14" ry="6" fill="#9A9268" opacity=".55" transform="rotate(46 128 58)"/>
-          <ellipse cx="148" cy="92" rx="13" ry="5.5" fill="#8A8258" opacity=".5" transform="rotate(14 148 92)"/>
-          <circle cx="148" cy="18" r="3" fill="#EFDCB2" opacity=".9"/>
-          <circle cx="160" cy="34" r="2.2" fill="#EFDCB2" opacity=".75"/>
-          <circle cx="138" cy="8" r="2.4" fill="#EFDCB2" opacity=".8"/>
-          <g filter="url(#soft2)">
-            <circle cx="84" cy="136" r="38" fill="url(#rg2)"/>
-            <path d="M84 102 C104 110 112 128 102 148 C120 142 124 118 110 106" fill="#E2AE82" opacity=".7"/>
-            <path d="M84 170 C64 162 56 144 66 124 C48 130 44 154 58 166" fill="#EFD0AB" opacity=".75"/>
-            <path d="M66 120 C82 110 102 114 109 132 C107 112 86 102 68 110" fill="#E9BE92" opacity=".6"/>
-            <path d="M102 152 C86 162 66 158 59 140 C61 160 82 170 100 162" fill="#DCA274" opacity=".6"/>
-            <path d="M75 130 C86 122 99 126 102 139 C101 126 88 118 76 124" fill="#D58B58" opacity=".7"/>
-            <path d="M93 144 C82 152 69 148 66 135 C67 148 80 156 92 150" fill="#CE8A5C" opacity=".7"/>
-            <path d="M84 130 C90 128 96 132 96 139 C96 145 90 148 85 147 C79 146 76 140 78 135 C80 131 84 130 84 130" fill="#C27144" opacity=".75"/>
-          </g>
-          <circle cx="30" cy="180" r="2.6" fill="#EFDCB2" opacity=".8"/>
-          <circle cx="44" cy="192" r="2" fill="#EFDCB2" opacity=".65"/>
-        </g>
+    <div class="bloom bloom-r" aria-hidden="true">
+      <svg viewBox="0 0 100 250" fill="none">
+        <path class="bloom-stem" d="M70 250 Q80 180 50 120 T30 20" stroke="var(--gold-soft)" stroke-width="1.2" stroke-linecap="round"/>
+        <path class="bloom-petal" d="M55 130 C80 120 90 140 75 155 C55 150 45 135 55 130 Z" fill="var(--peach-soft)" />
+        <path class="bloom-petal" d="M40 80 C15 65 10 90 25 105 C45 100 50 85 40 80 Z" fill="var(--peach)" />
+        <path class="bloom-petal" d="M70 60 C90 40 90 70 75 80 C60 70 55 50 70 60 Z" fill="var(--leaf)" opacity="0.7" />
+        <circle class="bloom-dot" cx="65" cy="142" r="2.5" fill="var(--gold)" />
+        <circle class="bloom-dot" cx="32" cy="90" r="2.5" fill="var(--gold)" />
       </svg>
     </div>
 
@@ -396,7 +355,7 @@ section{position:relative;padding:0 28px}
           <span class="tl-icon"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
           <div class="tl-body">
             <p class="tl-k">Venue</p>
-            <p class="tl-v">Seethangoli Alliance Hall</p>
+            <p class="tl-v">Alliance Convention Center</p>
             <p class="tl-s">Seethangoli, Kasaragod</p>
           </div>
         </div>
@@ -418,11 +377,11 @@ section{position:relative;padding:0 28px}
         </div>
       </div>
       <div class="actions">
-        <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=Seethangoli+Alliance+Hall" target="_blank" rel="noopener" data-rv>
+        <a class="btn btn-gold" href="https://share.google/j9bqMl25GnXivzqjd" target="_blank" rel="noopener" data-rv>
           <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           Open in Google Maps
         </a>
-        <a class="btn btn-ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Haseeb+%26+Jalala&dates=20260712T060000Z/20260712T093000Z&details=Nikkah+at+11%3A30+AM&location=Seethangoli+Alliance+Hall" target="_blank" rel="noopener" data-rv>
+        <a class="btn btn-ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Haseeb+%26+Jalala&dates=20260712T060000Z/20260712T093000Z&details=Nikkah+at+11%3A30+AM&location=Alliance+Convention+Center" target="_blank" rel="noopener" data-rv>
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="17" rx="2"/><path d="M8 2v6M16 2v6M3 11h18M12 15v4M10 17h4"/></svg>
           Add to calendar
         </a>
@@ -624,32 +583,69 @@ function heroIntro(){
     p.style.strokeDashoffset = len;
   });
   var tl = gsap.timeline({ defaults: { ease: EASE } });
+  
+  /* Initial states for sticky-stack choreography */
+  gsap.set("#bismillah", { y: 130 });
+  gsap.set(".hero .rule, #verse-ar, #verse-en, #verse-ref", { opacity: 0, y: 30 });
+  gsap.set("#verse-ar", { filter: "blur(5px)" });
+
   tl.to(archLines, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: .05 }, 0)
     .from(".arch-finial", { scale: 0.95, opacity: 0, transformOrigin: "center", duration: .8 }, 1.5)
-    .from("#bismillah", { opacity: 0, y: -16, filter: "blur(6px)", duration: 1.1 }, .7)
-    .from(".hero .rule", { opacity: 0, scaleX: .3, duration: .9 }, 1.1)
-    .from("#verse-ar", { opacity: 0, y: 22, filter: "blur(5px)", duration: 1.1 }, 1.35)
-    .from("#verse-en", { opacity: 0, y: 18, duration: 1 }, 1.7)
-    .from("#verse-ref", { opacity: 0, duration: .8 }, 2.05)
-    .from("#scroll-cue", { opacity: 0, duration: .9 }, 2.5);
+    .from("#bismillah", { opacity: 0, filter: "blur(6px)", duration: 1.1 }, .7)
+    .from("#scroll-cue", { opacity: 0, duration: .9 }, 2.0);
 }
 
 function scrollChoreo(){
   if (!hasGsap) return;
   if (reduced){ return; }
 
+  /* Hero Sticky-Stack */
+  var heroTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#hero",
+      start: "top top",
+      end: "+=1400",
+      pin: true,
+      scrub: true
+    }
+  });
+  heroTl.to("#bismillah", { y: 0 }, 0)
+        .to("#scroll-cue", { opacity: 0 }, 0)
+        .to("#verse-ar", { opacity: 1, y: 0, filter: "blur(0px)" }, 0.1)
+        .to(".hero .rule", { opacity: 1, y: 0 }, 0.4)
+        .to("#verse-en", { opacity: 1, y: 0 }, 0.55)
+        .to("#verse-ref", { opacity: 1, y: 0 }, 0.65);
+
   /* generic reveals */
   gsap.utils.toArray("[data-rv]").forEach(function(el){
     gsap.from(el, {
-      opacity: 0, y: 26, duration: 1.05, ease: EASE,
+      opacity: 0, y: 26, filter: "blur(8px)", duration: 1.05, ease: EASE,
       scrollTrigger: { trigger: el, start: "top 88%", once: true }
     });
   });
 
-  /* hero drifts up & fades as you leave it */
-  gsap.to(".hero-inner", {
-    opacity: 0, y: -60, ease: "none",
-    scrollTrigger: { trigger: "#hero", start: "55% top", end: "bottom top", scrub: true }
+  /* blooming florals */
+  gsap.utils.toArray(".bloom").forEach(function(bloom) {
+    var stems = bloom.querySelectorAll(".bloom-stem");
+    var petals = bloom.querySelectorAll(".bloom-petal, .bloom-dot");
+    
+    stems.forEach(function(p){
+      var len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    });
+    
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: bloom,
+        start: "top 85%",
+        end: "bottom 30%",
+        scrub: 1
+      }
+    });
+    
+    tl.to(stems, { strokeDashoffset: 0, ease: "none", duration: 1 }, 0);
+    tl.from(petals, { scale: 0, opacity: 0, transformOrigin: "center", stagger: 0.15, ease: "back.out(1.5)", duration: 0.5 }, 0.2);
   });
 
   /* names: written-on wipe reveals */
@@ -684,7 +680,7 @@ function scrollChoreo(){
         var el = document.getElementById(id);
         var target = parseInt(el.textContent, 10) || 0;
         var obj = { v: 0 };
-        gsap.to(obj, { v: target, duration: 1.4, delay: idx * .12, ease: "power2.out",
+        gsap.to(obj, { v: target, duration: 1.6, delay: idx * .12, ease: "elastic.out(1, 0.8)",
           onUpdate: function(){
             var n = Math.round(obj.v);
             el.textContent = (id === "cd-d") ? "" + n : (n < 10 ? "0" + n : "" + n);
@@ -697,10 +693,12 @@ function scrollChoreo(){
   gsap.to("#tl-line", { scaleY: 1, ease: "none",
     scrollTrigger: { trigger: ".tl-wrap", start: "top 80%", end: "bottom 55%", scrub: true } });
   gsap.utils.toArray("[data-tl]").forEach(function(el, i){
-    gsap.from(el, { opacity: 0, x: -22, duration: .9, delay: i * .08, ease: EASE,
+    var st = i * 0.12;
+    var d = st * st * 1.5; // asymmetric stagger delay
+    gsap.from(el, { opacity: 0, x: -22, filter: "blur(6px)", duration: 1, delay: st + d, ease: EASE,
       scrollTrigger: { trigger: el, start: "top 86%", once: true } });
     var icon = el.querySelector(".tl-icon");
-    gsap.from(icon, { scale: 0.95, opacity: 0, transformOrigin: "center", duration: .8, delay: .15 + i * .08, ease: EASE,
+    gsap.from(icon, { scale: 0.85, opacity: 0, transformOrigin: "center", duration: .85, delay: .15 + st + d, ease: "back.out(1.2)",
       scrollTrigger: { trigger: el, start: "top 86%", once: true } });
   });
 
@@ -753,7 +751,7 @@ function scrollChoreo(){
       tl.to(btn, { opacity: 0, y: 10, duration: .4, ease: "power2.out" }, 0)
         .to([".gate-names", ".gate-date", ".gate-bismillah"], { opacity: 0, duration: .45, ease: "power2.out" }, 0)
         .to("#seal", { scale: 1.6, opacity: 0, duration: .9, ease: "power3.inOut" }, .15)
-        .to(gate, { clipPath: "circle(0% at 50% 46%)", duration: 1.05, ease: "power3.inOut" }, .35);
+        .to(gate, { clipPath: "circle(0% at 50% 46%)", duration: 1.25, ease: "power4.inOut" }, .35);
       gate.style.clipPath = "circle(150% at 50% 46%)";
       heroIntro();
       scrollChoreo();
