@@ -156,6 +156,26 @@ body.locked{overflow:hidden;height:100svh}
 .gate-fl-br{bottom:-28px;right:-34px;width:168px;--drift-x:-9px;--drift-y:-12px;--rot:2.8deg;animation:floral-breathe 8.4s ease-in-out .7s infinite}
 .gate-fl-tr img,.gate-fl-br img{transform:scaleX(-1)}
 .gate-fl-bl img,.gate-fl-br img{filter:drop-shadow(0 -12px 24px rgba(70,51,30,.10))}
+.gate-stack{
+  opacity:.68;scale:var(--stack-scale,.86);
+  animation:floral-drift var(--stack-speed,10s) ease-in-out var(--stack-delay,0s) infinite;
+}
+.gate-stack .stack-bloom{
+  position:absolute;width:var(--w);left:var(--x);top:var(--y);
+  transform:rotate(var(--r,0deg)) scale(var(--s,1));
+  transform-origin:center;animation:stack-bloom-sway var(--bloom-speed,8s) ease-in-out var(--bloom-delay,0s) infinite;
+}
+.gate-stack .stack-bloom img{filter:drop-shadow(0 16px 22px rgba(70,51,30,.12))}
+.gate-stack .flip img{transform:scaleX(-1)}
+.gate-top-left{top:-42px;left:-52px;width:246px;height:214px;--stack-scale:.82;--drift-x:8px;--drift-y:12px;--rot:1.8deg;--stack-speed:9.5s}
+.gate-top-right{top:-50px;right:-58px;width:274px;height:238px;--stack-scale:.88;--drift-x:-8px;--drift-y:13px;--rot:-2deg;--stack-speed:10.5s;--stack-delay:.25s}
+.gate-side-right{top:170px;right:-54px;width:130px;height:250px;opacity:.42;--stack-scale:.72;--drift-x:-7px;--drift-y:18px;--rot:2deg;--stack-speed:11.5s;--stack-delay:.4s}
+.gate-bottom-left{left:-58px;bottom:-70px;width:254px;height:246px;--stack-scale:.88;--drift-x:8px;--drift-y:-12px;--rot:-2deg;--stack-speed:10.8s;--stack-delay:.1s}
+.gate-bottom-right{right:-68px;bottom:-72px;width:264px;height:252px;--stack-scale:.9;--drift-x:-9px;--drift-y:-13px;--rot:2.2deg;--stack-speed:11s;--stack-delay:.35s}
+@keyframes stack-bloom-sway{
+  0%,100%{translate:0 0;rotate:0deg}
+  50%{translate:var(--sx,4px) var(--sy,7px);rotate:var(--sr,2deg)}
+}
 /* ornate inner border */
 .gate-border{
   position:absolute;inset:18px;border:1px solid rgba(169,128,47,.25);
@@ -407,6 +427,38 @@ section{position:relative;padding:0 28px;overflow-x:clip}
   <div class="floral-piece gate-floral gate-fl-tr" aria-hidden="true"><img src="public/f2.svg" alt=""></div>
   <div class="floral-piece gate-floral gate-fl-bl" aria-hidden="true"><img src="public/8.svg" alt=""></div>
   <div class="floral-piece gate-floral gate-fl-br" aria-hidden="true"><img src="public/7.svg" alt=""></div>
+  <div class="floral-piece gate-floral gate-stack gate-top-left" aria-hidden="true">
+    <span class="stack-bloom" style="--w:116px;--x:0px;--y:0px;--r:-14deg;--s:.9;--sx:5px;--sy:8px;--sr:2deg"><img src="public/4.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:84px;--x:102px;--y:8px;--r:12deg;--s:.72;--sx:-4px;--sy:7px;--sr:-2deg;--bloom-delay:.25s"><img src="public/8.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:92px;--x:26px;--y:80px;--r:-8deg;--s:.68;--sx:3px;--sy:-6px;--sr:1.5deg;--bloom-delay:.5s"><img src="public/lilly.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:90px;--x:134px;--y:54px;--r:-18deg;--s:.62;--sx:-4px;--sy:7px;--sr:2deg;--bloom-delay:.18s"><img src="public/f2.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:96px;--x:-14px;--y:116px;--r:10deg;--s:.64;--sx:5px;--sy:-6px;--sr:-2deg;--bloom-delay:.46s"><img src="public/6.svg" alt=""></span>
+  </div>
+  <div class="floral-piece gate-floral gate-stack gate-top-right" aria-hidden="true">
+    <span class="stack-bloom flip" style="--w:130px;--x:82px;--y:-2px;--r:15deg;--s:.95;--sx:-5px;--sy:8px;--sr:-2deg"><img src="public/3.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:118px;--x:18px;--y:32px;--r:-12deg;--s:.82;--sx:5px;--sy:7px;--sr:2deg;--bloom-delay:.28s"><img src="public/f2.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:96px;--x:136px;--y:98px;--r:4deg;--s:.72;--sx:-3px;--sy:-7px;--sr:1.5deg;--bloom-delay:.58s"><img src="public/8.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:102px;--x:168px;--y:36px;--r:-10deg;--s:.66;--sx:4px;--sy:8px;--sr:-2deg;--bloom-delay:.16s"><img src="public/lilly.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:86px;--x:52px;--y:122px;--r:16deg;--s:.62;--sx:-4px;--sy:-7px;--sr:2deg;--bloom-delay:.44s"><img src="public/7.svg" alt=""></span>
+  </div>
+  <div class="floral-piece gate-floral gate-stack gate-side-right" aria-hidden="true">
+    <span class="stack-bloom flip" style="--w:82px;--x:34px;--y:0px;--r:-12deg;--s:.8;--sx:-5px;--sy:10px;--sr:-2deg"><img src="public/lilly.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:88px;--x:10px;--y:102px;--r:10deg;--s:.72;--sx:-4px;--sy:8px;--sr:2deg;--bloom-delay:.35s"><img src="public/5.svg" alt=""></span>
+  </div>
+  <div class="floral-piece gate-floral gate-stack gate-bottom-left" aria-hidden="true">
+    <span class="stack-bloom" style="--w:124px;--x:0px;--y:76px;--r:-6deg;--s:.95;--sx:6px;--sy:-8px;--sr:2deg"><img src="public/2.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:110px;--x:82px;--y:20px;--r:14deg;--s:.78;--sx:4px;--sy:8px;--sr:-2deg;--bloom-delay:.22s"><img src="public/7.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:92px;--x:124px;--y:118px;--r:-18deg;--s:.7;--sx:-4px;--sy:-7px;--sr:1.5deg;--bloom-delay:.55s"><img src="public/f2.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:118px;--x:-10px;--y:150px;--r:12deg;--s:.72;--sx:4px;--sy:-7px;--sr:-2deg;--bloom-delay:.18s"><img src="public/1.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:96px;--x:148px;--y:56px;--r:-8deg;--s:.64;--sx:-4px;--sy:7px;--sr:1.5deg;--bloom-delay:.36s"><img src="public/5.svg" alt=""></span>
+  </div>
+  <div class="floral-piece gate-floral gate-stack gate-bottom-right" aria-hidden="true">
+    <span class="stack-bloom flip" style="--w:130px;--x:86px;--y:70px;--r:7deg;--s:.95;--sx:-6px;--sy:-8px;--sr:-2deg"><img src="public/6.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:108px;--x:12px;--y:30px;--r:-14deg;--s:.78;--sx:5px;--sy:8px;--sr:2deg;--bloom-delay:.24s"><img src="public/1.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:88px;--x:28px;--y:138px;--r:18deg;--s:.68;--sx:-4px;--sy:-7px;--sr:-1.5deg;--bloom-delay:.5s"><img src="public/8.svg" alt=""></span>
+    <span class="stack-bloom flip" style="--w:118px;--x:150px;--y:132px;--r:-12deg;--s:.7;--sx:-5px;--sy:-7px;--sr:2deg;--bloom-delay:.2s"><img src="public/2.svg" alt=""></span>
+    <span class="stack-bloom" style="--w:96px;--x:68px;--y:0px;--r:10deg;--s:.62;--sx:4px;--sy:7px;--sr:-2deg;--bloom-delay:.42s"><img src="public/lilly.svg" alt=""></span>
+  </div>
   <!-- golden sparkles -->
   <div class="gate-sparkle" style="top:12%;left:18%;--sd:4.2s;--sdel:0s;--so:.6;--sy:-40px"></div>
   <div class="gate-sparkle" style="top:22%;right:15%;--sd:5.5s;--sdel:1.2s;--so:.8;--sy:-55px"></div>

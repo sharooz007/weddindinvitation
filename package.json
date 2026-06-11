@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "mkdir -p dist && cp index.html og.jpg og.png floral_corner.png pattern.svg dist/ && cp -R public dist/public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
