@@ -587,11 +587,10 @@ function heroIntro(){
   /* Initial states for sticky-stack choreography */
   gsap.set("#bismillah", { y: 130 });
   gsap.set(".hero .rule, #verse-ar, #verse-en, #verse-ref", { opacity: 0, y: 30 });
-  gsap.set("#verse-ar", { filter: "blur(5px)" });
 
   tl.to(archLines, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: .05 }, 0)
     .from(".arch-finial", { scale: 0.95, opacity: 0, transformOrigin: "center", duration: .8 }, 1.5)
-    .from("#bismillah", { opacity: 0, filter: "blur(6px)", duration: 1.1 }, .7)
+    .from("#bismillah", { opacity: 0, duration: 1.1 }, .7)
     .from("#scroll-cue", { opacity: 0, duration: .9 }, 2.0);
 }
 
@@ -611,7 +610,7 @@ function scrollChoreo(){
   });
   heroTl.to("#bismillah", { y: 0 }, 0)
         .to("#scroll-cue", { opacity: 0 }, 0)
-        .to("#verse-ar", { opacity: 1, y: 0, filter: "blur(0px)" }, 0.1)
+        .to("#verse-ar", { opacity: 1, y: 0 }, 0.1)
         .to(".hero .rule", { opacity: 1, y: 0 }, 0.4)
         .to("#verse-en", { opacity: 1, y: 0 }, 0.55)
         .to("#verse-ref", { opacity: 1, y: 0 }, 0.65);
