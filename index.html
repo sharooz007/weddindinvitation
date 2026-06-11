@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Haseeb &amp; Thasneem — Wedding Invitation</title>
+<title>Haseeb &amp; Thasneem - Wedding Invitation</title>
 <meta name="theme-color" content="#F6EDDC">
-<meta property="og:title" content="Mohammed Haseeb & Jalala Thasneem — Wedding Invitation">
+<meta property="og:title" content="Mohammed Haseeb & Jalala Thasneem - Wedding Invitation">
 <meta property="og:description" content="You're invited · Sunday, July 12 2026 · Nikkah 11:30 AM · Alliance Convention Center">
 <meta property="og:type" content="website">
 <meta property="og:image" content="og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Wedding invitation — Haseeb & Thasneem, July 12 2026">
+<meta property="og:image:alt" content="Wedding invitation - Haseeb & Thasneem, July 12 2026">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
   --espresso-2:#332715;
   --candle:#EAD9B0;
   --candle-muted:#C4AE7E;
-  --z-petals:1; --z-content:2; --z-frame:30; --z-gate:50;
+  --z-back:1; --z-petals:2; --z-content:4; --z-frame:30; --z-gate:50;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
@@ -59,8 +59,34 @@ body.locked{overflow:hidden;height:100svh}
     radial-gradient(150% 100% at -10% -10%, rgba(220,190,140,.30) 0%, rgba(246,237,220,0) 50%),
     radial-gradient(150% 100% at 110% -10%, rgba(220,190,140,.30) 0%, rgba(246,237,220,0) 50%);
 }
+.back-botanical{
+  position:fixed;inset:0;pointer-events:none;z-index:var(--z-back);
+  overflow:hidden;opacity:.2;mix-blend-mode:multiply;
+}
+.back-botanical img{
+  position:absolute;display:block;width:min(118vw,620px);height:auto;
+  left:50%;top:50%;transform-origin:center;
+  filter:saturate(.72) sepia(.15) contrast(.92);
+  will-change:transform, opacity;
+}
+.back-botanical .back-a{
+  opacity:.5;
+  animation:back-layer-one 28s cubic-bezier(.45,0,.55,1) infinite;
+}
+.back-botanical .back-b{
+  width:min(96vw,520px);opacity:.32;
+  animation:back-layer-two 34s cubic-bezier(.45,0,.55,1) -7s infinite;
+}
+@keyframes back-layer-one{
+  0%,100%{transform:translate3d(-54%,-50%,0) rotate(-7deg) scale(1.02)}
+  50%{transform:translate3d(-47%,-53%,0) rotate(5deg) scale(1.1)}
+}
+@keyframes back-layer-two{
+  0%,100%{transform:translate3d(-24%,-18%,0) rotate(10deg) scale(.9)}
+  50%{transform:translate3d(-36%,-24%,0) rotate(-4deg) scale(.98)}
+}
 .grain{
-  position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.05;
+  position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 #petals{position:fixed;inset:0;pointer-events:none;z-index:var(--z-petals)}
@@ -118,12 +144,18 @@ body.locked{overflow:hidden;height:100svh}
   100%{opacity:0;transform:translateY(var(--sy,-60px)) scale(.2)}
 }
 /* floral corners */
-.gate-floral{position:absolute;pointer-events:none;opacity:.65}
-.gate-floral svg{display:block;width:100%;height:auto}
-.gate-fl-tl{top:0;left:0;width:120px}
-.gate-fl-tr{top:0;right:0;width:120px;transform:scaleX(-1)}
-.gate-fl-bl{bottom:0;left:0;width:120px;transform:scaleY(-1)}
-.gate-fl-br{bottom:0;right:0;width:120px;transform:scale(-1,-1)}
+.floral-piece{
+  position:absolute;pointer-events:none;user-select:none;
+  transform-origin:center;will-change:transform, opacity, filter;
+}
+.floral-piece img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 28px rgba(70,51,30,.12))}
+.gate-floral{opacity:.78}
+.gate-fl-tl{top:-20px;left:-22px;width:154px;--drift-x:7px;--drift-y:11px;--rot:2.4deg;animation:floral-breathe 7.5s ease-in-out infinite}
+.gate-fl-tr{top:-18px;right:-24px;width:150px;--drift-x:-8px;--drift-y:10px;--rot:-2.2deg;animation:floral-breathe 8.2s ease-in-out .45s infinite}
+.gate-fl-bl{bottom:-30px;left:-32px;width:166px;--drift-x:9px;--drift-y:-10px;--rot:-2.8deg;animation:floral-breathe 8.8s ease-in-out .2s infinite}
+.gate-fl-br{bottom:-28px;right:-34px;width:168px;--drift-x:-9px;--drift-y:-12px;--rot:2.8deg;animation:floral-breathe 8.4s ease-in-out .7s infinite}
+.gate-fl-tr img,.gate-fl-br img{transform:scaleX(-1)}
+.gate-fl-bl img,.gate-fl-br img{filter:drop-shadow(0 -12px 24px rgba(70,51,30,.10))}
 /* ornate inner border */
 .gate-border{
   position:absolute;inset:18px;border:1px solid rgba(169,128,47,.25);
@@ -157,9 +189,9 @@ body.locked{overflow:hidden;height:100svh}
 .gate-btn:active{transform:scale(.96)}
 
 /* ---------- shared section bones ---------- */
-main{position:relative;z-index:var(--z-content)}
-.shell{max-width:430px;margin:0 auto;position:relative}
-section{position:relative;padding:0 28px}
+main{position:relative;z-index:var(--z-content);overflow-x:clip;width:100%;max-width:100%}
+.shell{max-width:430px;margin:0 auto;position:relative;overflow-x:clip}
+section{position:relative;padding:0 28px;overflow-x:clip}
 .sect-title{font-family:'Imperial Script',cursive;font-weight:400;font-size:40px;color:var(--peach);text-align:center;line-height:1.15;text-wrap:balance}
 .orn{display:flex;justify-content:center;color:var(--gold-soft)}
 .orn svg{display:block}
@@ -168,6 +200,10 @@ section{position:relative;padding:0 28px}
 .hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:30px;padding-bottom:64px}
 .hero-inner{position:relative;width:100%;max-width:340px;margin:0 auto;text-align:center}
 .arch{position:absolute;inset:-20px -10px auto -10px;width:calc(100% + 20px);pointer-events:none;color:var(--gold-soft)}
+.hero-floral{opacity:.66;z-index:-1}
+.hero-fl-l{left:-72px;top:84px;width:130px;--drift-x:8px;--drift-y:18px;--rot:-3deg;animation:floral-drift 10s ease-in-out infinite}
+.hero-fl-r{right:-70px;bottom:54px;width:126px;--drift-x:-7px;--drift-y:-16px;--rot:3.6deg;animation:floral-drift 10.5s ease-in-out .4s infinite}
+.hero-fl-r img{transform:scaleX(-1)}
 .hero-content{position:relative;padding:96px 20px 0}
 .bismillah{font-family:'Amiri',serif;font-weight:700;font-size:30px;line-height:1.9;color:#8A6526;direction:rtl}
 .verse-ar{font-family:'Amiri',serif;font-size:21px;line-height:2.25;color:var(--ink);direction:rtl;margin-top:26px;padding:0 4px}
@@ -176,7 +212,7 @@ section{position:relative;padding:0 28px}
 .rule{width:110px;height:13px;margin:22px auto 0;color:var(--gold-soft)}
 .rule svg{width:100%;height:100%;display:block}
 .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-cue span{font-family:'Marcellus',serif;font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-label)}
+.scroll-cue span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .cue-line{width:1px;height:34px;background:rgba(169,128,47,.35);position:relative;overflow:hidden}
 .cue-line::after{content:"";position:absolute;left:0;top:-8px;width:1px;height:8px;background:var(--gold);animation:cue 2.2s cubic-bezier(.45,0,.55,1) infinite}
 @keyframes cue{0%{transform:translateY(0)}70%,100%{transform:translateY(46px)}}
@@ -192,10 +228,35 @@ section{position:relative;padding:0 28px}
 .amp-row .wing{color:var(--leaf);opacity:.6}
 .amp{font-family:'Imperial Script',cursive;font-size:64px;color:var(--peach);line-height:1}
 .blessing{font-style:italic;font-size:16.5px;line-height:1.8;color:var(--ink-soft);margin-top:44px;padding:0 12px;text-wrap:pretty}
-.bloom{position:absolute;pointer-events:none;will-change:transform}
-.bloom svg{display:block;width:100%;height:auto;overflow:visible}
-.bloom-l{left:-10px;top:100px;width:100px}
-.bloom-r{right:-10px;top:250px;width:100px}
+.bloom{opacity:.82}
+.bloom-l{left:-52px;top:88px;width:138px;--drift-x:10px;--drift-y:22px;--rot:-4deg;animation:floral-drift 11s ease-in-out infinite}
+.bloom-r{right:-50px;top:262px;width:138px;--drift-x:-10px;--drift-y:-20px;--rot:4deg;animation:floral-drift 10.4s ease-in-out .35s infinite}
+.bloom-r img{transform:scaleX(-1)}
+.name-spray{left:50%;top:8px;width:92px;margin-left:-46px;opacity:.62;--drift-x:0px;--drift-y:12px;--rot:3deg;animation:floral-breathe 7.6s ease-in-out .25s infinite}
+.name-spray img{filter:drop-shadow(0 14px 22px rgba(70,51,30,.10))}
+
+/* ---------- floral motion placements ---------- */
+.section-floral{opacity:.72}
+.count-fl-l{left:-64px;top:-6px;width:118px;--drift-x:8px;--drift-y:16px;--rot:3deg;animation:floral-drift 9.5s ease-in-out .15s infinite}
+.count-fl-r{right:-62px;bottom:28px;width:116px;--drift-x:-9px;--drift-y:-15px;--rot:-3deg;animation:floral-drift 10.2s ease-in-out .55s infinite}
+.count-fl-r img{transform:scaleX(-1)}
+.details-fl-l{left:-78px;top:88px;width:136px;--drift-x:9px;--drift-y:18px;--rot:-2.5deg;animation:floral-drift 10.8s ease-in-out infinite}
+.details-fl-r{right:-76px;top:236px;width:132px;--drift-x:-8px;--drift-y:-18px;--rot:2.5deg;animation:floral-drift 10.1s ease-in-out .5s infinite}
+.details-fl-r img{transform:scaleX(-1)}
+.panel-flower{right:16px;top:-34px;width:78px;opacity:.7;--drift-x:-5px;--drift-y:9px;--rot:5deg;animation:floral-breathe 6.8s ease-in-out infinite}
+.dua-fl-l{left:-70px;top:34px;width:132px;opacity:.52;--drift-x:10px;--drift-y:14px;--rot:3deg;animation:floral-drift 10s ease-in-out .2s infinite}
+.dua-fl-r{right:-68px;bottom:92px;width:128px;opacity:.46;--drift-x:-8px;--drift-y:-16px;--rot:-3deg;animation:floral-drift 10.7s ease-in-out .65s infinite}
+.dua-fl-r img{transform:scaleX(-1)}
+.dua-fl-l img,.dua-fl-r img{filter:drop-shadow(0 18px 28px rgba(0,0,0,.18)) saturate(.9) brightness(.9)}
+
+@keyframes floral-breathe{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}
+  50%{transform:translate3d(var(--drift-x,6px),var(--drift-y,10px),0) rotate(var(--rot,3deg)) scale(1.035)}
+}
+@keyframes floral-drift{
+  0%,100%{transform:translate3d(0,0,0) rotate(calc(var(--rot,3deg) * -.35)) scale(1)}
+  50%{transform:translate3d(var(--drift-x,8px),var(--drift-y,16px),0) rotate(var(--rot,3deg)) scale(1.045)}
+}
 
 /* ---------- countdown ---------- */
 .count{padding-top:30px;padding-bottom:104px;text-align:center}
@@ -272,14 +333,23 @@ section{position:relative;padding:0 28px}
   body{background:#E8D8B6}
   main{max-width:540px;margin:0 auto}
   .atmo{max-width:540px;left:50%;transform:translateX(-50%);box-shadow:0 0 90px rgba(70,51,30,.3);background-color:var(--cream)}
+  .back-botanical{max-width:540px;left:50%;transform:translateX(-50%);right:auto;width:100%}
   .frame{max-width:516px;left:50%;transform:translateX(-50%);right:auto;width:calc(100% - 24px)}
   #petals{max-width:540px;left:50%;transform:translateX(-50%)}
   .gate{max-width:540px;left:50%;transform:translateX(-50%);right:auto;width:100%}
 }
 
+@media (max-width: 390px){
+  .gate-fl-tl,.gate-fl-tr{width:138px}
+  .gate-fl-bl,.gate-fl-br{width:148px}
+  .hero-fl-l,.hero-fl-r{width:112px}
+  .bloom-l,.bloom-r{width:124px}
+  .details-fl-l,.details-fl-r,.dua-fl-l,.dua-fl-r{width:118px}
+}
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
-  .cue-line::after,.star{animation:none}
+  .cue-line::after,.star,.floral-piece,.back-botanical img{animation:none}
   .star{opacity:.45}
   *{transition-duration:.01ms !important}
 }
@@ -288,6 +358,10 @@ section{position:relative;padding:0 28px}
 <body class="locked">
 
 <div class="atmo"></div>
+<div class="back-botanical" aria-hidden="true">
+  <img class="back-a" src="public/back.svg" alt="">
+  <img class="back-b" src="public/back.svg" alt="">
+</div>
 <canvas id="petals"></canvas>
 <div class="grain"></div>
 
@@ -318,62 +392,10 @@ section{position:relative;padding:0 28px}
     </g>
   </svg>
   <!-- floral corner ornaments -->
-  <div class="gate-floral gate-fl-tl" aria-hidden="true">
-    <svg viewBox="0 0 150 150" fill="none">
-      <path d="M0 0 Q30 10 50 35 T60 80" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <path d="M0 0 Q10 30 35 50 T80 60" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <ellipse cx="42" cy="28" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-35 42 28)"/>
-      <ellipse cx="28" cy="42" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-55 28 42)"/>
-      <circle cx="55" cy="55" r="3" fill="#C9A84C" opacity=".4"/>
-      <path d="M10 2 Q20 20 15 45" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <path d="M2 10 Q20 20 45 15" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <ellipse cx="18" cy="14" rx="6" ry="4" fill="#9A9268" opacity=".25" transform="rotate(-40 18 14)"/>
-      <ellipse cx="14" cy="18" rx="6" ry="4" fill="#9A9268" opacity=".25" transform="rotate(-50 14 18)"/>
-      <circle cx="25" cy="25" r="1.5" fill="#E8CF96" opacity=".6"/>
-      <path d="M52 30 C62 22 72 28 65 38 C58 48 48 40 52 30 Z" fill="#D78A66" opacity=".2"/>
-      <path d="M30 52 C22 62 28 72 38 65 C48 58 40 48 30 52 Z" fill="#D78A66" opacity=".2"/>
-    </svg>
-  </div>
-  <div class="gate-floral gate-fl-tr" aria-hidden="true">
-    <svg viewBox="0 0 150 150" fill="none">
-      <path d="M0 0 Q30 10 50 35 T60 80" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <path d="M0 0 Q10 30 35 50 T80 60" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <ellipse cx="42" cy="28" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-35 42 28)"/>
-      <ellipse cx="28" cy="42" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-55 28 42)"/>
-      <circle cx="55" cy="55" r="3" fill="#C9A84C" opacity=".4"/>
-      <path d="M10 2 Q20 20 15 45" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <path d="M2 10 Q20 20 45 15" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <ellipse cx="18" cy="14" rx="6" ry="4" fill="#9A9268" opacity=".25" transform="rotate(-40 18 14)"/>
-      <circle cx="25" cy="25" r="1.5" fill="#E8CF96" opacity=".6"/>
-      <path d="M52 30 C62 22 72 28 65 38 C58 48 48 40 52 30 Z" fill="#D78A66" opacity=".2"/>
-    </svg>
-  </div>
-  <div class="gate-floral gate-fl-bl" aria-hidden="true">
-    <svg viewBox="0 0 150 150" fill="none">
-      <path d="M0 0 Q30 10 50 35 T60 80" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <path d="M0 0 Q10 30 35 50 T80 60" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <ellipse cx="42" cy="28" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-35 42 28)"/>
-      <ellipse cx="28" cy="42" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-55 28 42)"/>
-      <circle cx="55" cy="55" r="3" fill="#C9A84C" opacity=".4"/>
-      <path d="M10 2 Q20 20 15 45" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <path d="M2 10 Q20 20 45 15" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <circle cx="25" cy="25" r="1.5" fill="#E8CF96" opacity=".6"/>
-      <path d="M30 52 C22 62 28 72 38 65 C48 58 40 48 30 52 Z" fill="#D78A66" opacity=".2"/>
-    </svg>
-  </div>
-  <div class="gate-floral gate-fl-br" aria-hidden="true">
-    <svg viewBox="0 0 150 150" fill="none">
-      <path d="M0 0 Q30 10 50 35 T60 80" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <path d="M0 0 Q10 30 35 50 T80 60" stroke="#C9A84C" stroke-width=".8" fill="none"/>
-      <ellipse cx="42" cy="28" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-35 42 28)"/>
-      <ellipse cx="28" cy="42" rx="12" ry="7" fill="#D78A66" opacity=".35" transform="rotate(-55 28 42)"/>
-      <circle cx="55" cy="55" r="3" fill="#C9A84C" opacity=".4"/>
-      <path d="M10 2 Q20 20 15 45" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <path d="M2 10 Q20 20 45 15" stroke="#9A9268" stroke-width=".6" opacity=".5"/>
-      <circle cx="25" cy="25" r="1.5" fill="#E8CF96" opacity=".6"/>
-      <path d="M52 30 C62 22 72 28 65 38 C58 48 48 40 52 30 Z" fill="#D78A66" opacity=".2"/>
-    </svg>
-  </div>
+  <div class="floral-piece gate-floral gate-fl-tl" aria-hidden="true"><img src="public/lilly.svg" alt=""></div>
+  <div class="floral-piece gate-floral gate-fl-tr" aria-hidden="true"><img src="public/f2.svg" alt=""></div>
+  <div class="floral-piece gate-floral gate-fl-bl" aria-hidden="true"><img src="public/8.svg" alt=""></div>
+  <div class="floral-piece gate-floral gate-fl-br" aria-hidden="true"><img src="public/7.svg" alt=""></div>
   <!-- golden sparkles -->
   <div class="gate-sparkle" style="top:12%;left:18%;--sd:4.2s;--sdel:0s;--so:.6;--sy:-40px"></div>
   <div class="gate-sparkle" style="top:22%;right:15%;--sd:5.5s;--sdel:1.2s;--so:.8;--sy:-55px"></div>
@@ -409,6 +431,8 @@ section{position:relative;padding:0 28px}
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
     <div class="hero-inner">
+      <div class="floral-piece hero-floral hero-fl-l" aria-hidden="true"><img src="public/3.svg" alt=""></div>
+      <div class="floral-piece hero-floral hero-fl-r" aria-hidden="true"><img src="public/4.svg" alt=""></div>
       <svg class="arch" viewBox="0 0 360 600" fill="none" aria-hidden="true">
         <path class="arch-line" d="M30 600 V230 C30 130 72 88 122 64 C152 50 168 42 180 18 C192 42 208 50 238 64 C288 88 330 130 330 230 V600 Z" stroke="currentColor" stroke-width="1.5"/>
         <path class="arch-line" d="M42 600 V234 C42 142 80 100 128 76 C156 62 170 54 180 34 C190 54 204 62 232 76 C280 100 318 142 318 234 V600 Z" stroke="currentColor" stroke-width=".7" opacity=".5"/>
@@ -430,26 +454,9 @@ section{position:relative;padding:0 28px}
 
   <!-- ============ NAMES ============ -->
   <section class="names" id="names">
-    <div class="bloom bloom-l" aria-hidden="true">
-      <svg viewBox="0 0 100 250" fill="none">
-        <path class="bloom-stem" d="M30 250 Q20 180 50 120 T70 20" stroke="var(--gold-soft)" stroke-width="1.2" stroke-linecap="round"/>
-        <path class="bloom-petal" d="M45 130 C20 120 10 140 25 155 C45 150 55 135 45 130 Z" fill="var(--peach-soft)" />
-        <path class="bloom-petal" d="M60 80 C85 65 90 90 75 105 C55 100 50 85 60 80 Z" fill="var(--peach)" />
-        <path class="bloom-petal" d="M30 60 C10 40 10 70 25 80 C40 70 45 50 30 60 Z" fill="var(--leaf)" opacity="0.7" />
-        <circle class="bloom-dot" cx="35" cy="142" r="2.5" fill="var(--gold)" />
-        <circle class="bloom-dot" cx="68" cy="90" r="2.5" fill="var(--gold)" />
-      </svg>
-    </div>
-    <div class="bloom bloom-r" aria-hidden="true">
-      <svg viewBox="0 0 100 250" fill="none">
-        <path class="bloom-stem" d="M70 250 Q80 180 50 120 T30 20" stroke="var(--gold-soft)" stroke-width="1.2" stroke-linecap="round"/>
-        <path class="bloom-petal" d="M55 130 C80 120 90 140 75 155 C55 150 45 135 55 130 Z" fill="var(--peach-soft)" />
-        <path class="bloom-petal" d="M40 80 C15 65 10 90 25 105 C45 100 50 85 40 80 Z" fill="var(--peach)" />
-        <path class="bloom-petal" d="M70 60 C90 40 90 70 75 80 C60 70 55 50 70 60 Z" fill="var(--leaf)" opacity="0.7" />
-        <circle class="bloom-dot" cx="65" cy="142" r="2.5" fill="var(--gold)" />
-        <circle class="bloom-dot" cx="32" cy="90" r="2.5" fill="var(--gold)" />
-      </svg>
-    </div>
+    <div class="floral-piece bloom bloom-l" aria-hidden="true"><img src="public/1.svg" alt=""></div>
+    <div class="floral-piece bloom bloom-r" aria-hidden="true"><img src="public/2.svg" alt=""></div>
+    <div class="floral-piece name-spray" aria-hidden="true"><img src="public/412.svg" alt=""></div>
 
     <p class="invite-line" data-rv>You're invited to our wedding</p>
     <div class="orn" data-rv style="margin-top:18px"><svg width="150" height="22" viewBox="0 0 150 22" fill="none"><path d="M75 4 C73 8 70 10 66 10 C70 10 73 13 75 18 C77 13 80 10 84 10 C80 10 77 8 75 4 Z" stroke="currentColor" stroke-width=".9"/><path d="M58 11 C48 7 36 9 24 14" stroke="currentColor" stroke-width=".8"/><path d="M92 11 C102 7 114 9 126 14" stroke="currentColor" stroke-width=".8"/><ellipse cx="36" cy="11" rx="6" ry="2.4" fill="currentColor" opacity=".5" transform="rotate(-12 36 11)"/><ellipse cx="114" cy="11" rx="6" ry="2.4" fill="currentColor" opacity=".5" transform="rotate(12 114 11)"/></svg></div>
@@ -475,6 +482,8 @@ section{position:relative;padding:0 28px}
 
   <!-- ============ COUNTDOWN ============ -->
   <section class="count" id="count">
+    <div class="floral-piece section-floral count-fl-l" aria-hidden="true"><img src="public/5.svg" alt=""></div>
+    <div class="floral-piece section-floral count-fl-r" aria-hidden="true"><img src="public/6.svg" alt=""></div>
     <h2 class="sect-title" data-rv>In sha Allah, in</h2>
     <div class="count-grid" id="count-grid" data-rv>
       <div class="count-cell"><span class="count-num"><span id="cd-d">0</span></span><span class="count-lab">Days</span></div>
@@ -487,8 +496,11 @@ section{position:relative;padding:0 28px}
 
   <!-- ============ DETAILS ============ -->
   <section class="details" id="details">
+    <div class="floral-piece section-floral details-fl-l" aria-hidden="true"><img src="public/lilly.svg" alt=""></div>
+    <div class="floral-piece section-floral details-fl-r" aria-hidden="true"><img src="public/f2.svg" alt=""></div>
     <h2 class="sect-title" data-rv>The Nikkah</h2>
     <div class="panel" data-rv>
+      <div class="floral-piece panel-flower" aria-hidden="true"><img src="public/8.svg" alt=""></div>
       <span class="panel-finial"><svg viewBox="0 0 26 26" fill="none"><path d="M13 2 L17 8 L13 14 L9 8 Z" stroke="currentColor" stroke-width="1"/><circle cx="13" cy="20" r="2" fill="currentColor" opacity=".7"/></svg></span>
       <div class="tl-wrap">
         <i class="tl-line" id="tl-line"></i>
@@ -535,6 +547,8 @@ section{position:relative;padding:0 28px}
   <!-- ============ DUA FINALE ============ -->
   <div class="dua-divider" aria-hidden="true"><svg viewBox="0 0 390 70" preserveAspectRatio="none" fill="currentColor"><path d="M0 70 V44 C60 44 96 30 138 30 C166 30 178 14 195 0 C212 14 224 30 252 30 C294 30 330 44 390 44 V70 Z"/></svg></div>
   <section class="dua" id="dua">
+    <div class="floral-piece dua-fl-l" aria-hidden="true"><img src="public/7.svg" alt=""></div>
+    <div class="floral-piece dua-fl-r" aria-hidden="true"><img src="public/4.svg" alt=""></div>
     <div class="stars" id="stars" aria-hidden="true"></div>
     <div class="dua-inner shell">
       <h2 class="dua-title" data-rv>A humble request</h2>
@@ -602,7 +616,7 @@ if (petalsOn){
       /* base fall speed, with slow drift */
       vy: 0.3 + Math.random() * 0.45,
       vyDrift: 0,
-      /* compound horizontal oscillation — two sine waves */
+      /* compound horizontal oscillation with two sine waves */
       ph1: Math.random() * Math.PI * 2,
       sw1: 10 + Math.random() * 22,
       sp1: 0.003 + Math.random() * 0.005,
@@ -764,28 +778,14 @@ function scrollChoreo(){
     });
   });
 
-  /* blooming florals */
-  gsap.utils.toArray(".bloom").forEach(function(bloom) {
-    var stems = bloom.querySelectorAll(".bloom-stem");
-    var petals = bloom.querySelectorAll(".bloom-petal, .bloom-dot");
-    
-    stems.forEach(function(p){
-      var len = p.getTotalLength();
-      p.style.strokeDasharray = len;
-      p.style.strokeDashoffset = len;
-    });
-    
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: bloom,
-        start: "top 85%",
-        end: "bottom 30%",
-        scrub: 1
-      }
-    });
-    
-    tl.to(stems, { strokeDashoffset: 0, ease: "none", duration: 1 }, 0);
-    tl.from(petals, { scale: 0, opacity: 0, transformOrigin: "center", stagger: 0.15, ease: "back.out(1.5)", duration: 0.5 }, 0.2);
+  /* floral image reveals, with parent CSS drift continuing afterward */
+  gsap.utils.toArray(".floral-piece").forEach(function(piece, i) {
+    var img = piece.querySelector("img");
+    if (!img) return;
+    gsap.fromTo(img,
+      { scale: 0.9, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.15, delay: (i % 4) * .05, ease: EASE, clearProps: "transform,opacity",
+        scrollTrigger: { trigger: piece, start: "top 92%", once: true } });
   });
 
   /* names: written-on wipe reveals */
@@ -801,15 +801,6 @@ function scrollChoreo(){
   gsap.from("#amp", {
     scale: .2, opacity: 0, rotate: -14, transformOrigin: "center", duration: 1.1, ease: EASE,
     scrollTrigger: { trigger: "#amp", start: "top 90%", once: true }
-  });
-
-  /* parallax florals */
-  gsap.utils.toArray(".flor").forEach(function(el){
-    var sp = parseFloat(el.getAttribute("data-speed")) || 30;
-    gsap.fromTo(el, { y: sp }, { y: -sp, ease: "none",
-      scrollTrigger: { trigger: "#names", start: "top bottom", end: "bottom top", scrub: true } });
-    gsap.from(el, { opacity: 0, scale: .85, transformOrigin: "center", duration: 1.4, ease: EASE,
-      scrollTrigger: { trigger: "#names", start: "top 70%", once: true } });
   });
 
   /* countdown count-up on arrival */
@@ -868,7 +859,7 @@ function scrollChoreo(){
     ring.style.strokeDashoffset = rl;
     gsap.timeline({ defaults: { ease: EASE } })
       .from(".gate-border", { opacity: 0, scale: .97, duration: 1.4 }, 0)
-      .from(".gate-floral", { opacity: 0, scale: .7, transformOrigin: "top left", stagger: .08, duration: 1.2 }, .15)
+      .from(".gate-floral img", { opacity: 0, scale: .72, transformOrigin: "center", stagger: .08, duration: 1.2, clearProps: "transform,opacity" }, .15)
       .from(".gate-glow", { opacity: 0, scale: .5, duration: 1.6, ease: "power2.out" }, .1)
       .from(".gate-bismillah", { opacity: 0, y: -12, duration: 1 }, .4)
       .to(ring, { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" }, .5)
