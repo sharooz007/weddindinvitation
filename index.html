@@ -168,8 +168,18 @@ body.locked{overflow:hidden;height:100svh}
 .gate-bismillah{font-family:'Amiri',serif;font-size:17px;color:var(--gold-label);letter-spacing:1px;margin-bottom:34px;position:relative}
 .seal{position:relative;width:188px;height:188px;display:flex;align-items:center;justify-content:center}
 .seal svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.seal-mono{font-family:'Imperial Script',cursive;font-size:64px;color:var(--script);line-height:1;transform:translateY(-4px)}
-.seal-mono .amp-s{font-size:34px;color:var(--peach);margin:0 2px}
+.seal-mono{
+  font-family:'Imperial Script',cursive;font-size:64px;color:var(--script);line-height:.9;
+  width:142px;display:grid;grid-template-columns:1fr 28px 1fr;align-items:center;justify-items:center;
+  transform:translateY(-2px);font-kerning:none;
+}
+.seal-letter{display:block;line-height:.86}
+.seal-h{transform:translate(8px,0)}
+.seal-t{transform:translate(-8px,0)}
+.seal-mono .amp-s{
+  display:block;font-size:32px;line-height:1;color:var(--peach);margin:0;
+  transform:translate(-1px,8px);
+}
 .gate-names{font-family:'Marcellus',serif;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft);margin-top:36px;position:relative}
 .gate-date{font-family:'EB Garamond',serif;font-style:italic;font-size:16px;color:var(--gold-label);margin-top:10px;position:relative}
 .gate-btn{
@@ -205,7 +215,8 @@ section{position:relative;padding:0 28px;overflow-x:clip}
 .hero-fl-r{right:-70px;bottom:54px;width:126px;--drift-x:-7px;--drift-y:-16px;--rot:3.6deg;animation:floral-drift 10.5s ease-in-out .4s infinite}
 .hero-fl-r img{transform:scaleX(-1)}
 .hero-content{position:relative;padding:96px 20px 0}
-.bismillah{font-family:'Amiri',serif;font-weight:700;font-size:30px;line-height:1.9;color:#8A6526;direction:rtl}
+.bismillah{font-family:'Amiri',serif;font-weight:700;font-size:30px;line-height:1.9;color:#8A6526;direction:rtl;white-space:nowrap}
+.bismillah-reveal{display:inline-block;will-change:clip-path, opacity, filter}
 .verse-ar{font-family:'Amiri',serif;font-size:21px;line-height:2.25;color:var(--ink);direction:rtl;margin-top:26px;padding:0 4px}
 .verse-en{font-style:italic;font-size:16.5px;line-height:1.75;color:var(--ink-soft);margin-top:22px;text-wrap:pretty}
 .verse-ref{font-family:'Marcellus',serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-label);margin-top:14px}
@@ -418,7 +429,7 @@ section{position:relative;padding:0 28px;overflow-x:clip}
         <circle cx="8" cy="94" r="2.6"/><circle cx="180" cy="94" r="2.6"/>
       </g>
     </svg>
-    <div class="seal-mono">H<span class="amp-s">&amp;</span>T</div>
+    <div class="seal-mono"><span class="seal-letter seal-h">H</span><span class="amp-s">&amp;</span><span class="seal-letter seal-t">T</span></div>
   </div>
   <p class="gate-names">Haseeb&ensp;·&ensp;Thasneem</p>
   <p class="gate-date">Sunday, the twelfth of July, 2026</p>
@@ -729,8 +740,36 @@ if (petalsOn){
 /* ---------- choreography ---------- */
 var EASE = "power4.out";
 
+function prepareBismillahReveal(){
+  var el = document.getElementById("bismillah");
+  if (!el) return { target: null, steps: 1 };
+  if (el.dataset.split === "true") {
+    return { target: el.querySelector(".bismillah-reveal"), steps: parseInt(el.dataset.steps, 10) || 1 };
+  }
+  var text = el.textContent.trim();
+  el.setAttribute("aria-label", text);
+  el.dataset.split = "true";
+  el.textContent = "";
+
+  var pieces;
+  if (typeof Intl !== "undefined" && Intl.Segmenter){
+    var segmenter = new Intl.Segmenter("ar", { granularity: "grapheme" });
+    pieces = Array.from(segmenter.segment(text), function(part){ return part.segment; });
+  } else {
+    pieces = Array.from(text);
+  }
+  el.dataset.steps = pieces.filter(function(ch){ return !/\s/.test(ch); }).length || 1;
+
+  var span = document.createElement("span");
+  span.className = "bismillah-reveal";
+  span.textContent = text;
+  el.appendChild(span);
+  return { target: span, steps: parseInt(el.dataset.steps, 10) || 1 };
+}
+
 function heroIntro(){
   if (!hasGsap || reduced) return;
+  var bismillahReveal = prepareBismillahReveal();
   var archLines = document.querySelectorAll(".arch-line");
   archLines.forEach(function(p){
     var len = p.getTotalLength();
@@ -741,11 +780,15 @@ function heroIntro(){
   
   /* Initial states for sticky-stack choreography */
   gsap.set("#bismillah", { y: 130 });
+  gsap.set(bismillahReveal.target, { clipPath: "inset(0 0 0 100%)", opacity: 1, filter: "blur(2px)" });
   gsap.set(".hero .rule, #verse-ar, #verse-en, #verse-ref", { opacity: 0, y: 30 });
 
   tl.to(archLines, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: .05 }, 0)
     .from(".arch-finial", { scale: 0.95, opacity: 0, transformOrigin: "center", duration: .8 }, 1.5)
-    .from("#bismillah", { opacity: 0, duration: 1.1 }, .7)
+    .to(bismillahReveal.target, {
+      clipPath: "inset(0 0 0 0%)", filter: "blur(0px)", duration: 1.55,
+      ease: "steps(" + bismillahReveal.steps + ")"
+    }, .7)
     .from("#scroll-cue", { opacity: 0, duration: .9 }, 2.0);
 }
 
