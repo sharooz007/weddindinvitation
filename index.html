@@ -230,10 +230,6 @@ section{position:relative;padding:0 28px;overflow-x:clip}
 .hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:30px;padding-bottom:64px}
 .hero-inner{position:relative;width:100%;max-width:340px;margin:0 auto;text-align:center}
 .arch{position:absolute;inset:-20px -10px auto -10px;width:calc(100% + 20px);pointer-events:none;color:var(--gold-soft)}
-.hero-floral{opacity:.66;z-index:-1}
-.hero-fl-l{left:-72px;top:84px;width:130px;--drift-x:8px;--drift-y:18px;--rot:-3deg;animation:floral-drift 10s ease-in-out infinite}
-.hero-fl-r{right:-70px;bottom:54px;width:126px;--drift-x:-7px;--drift-y:-16px;--rot:3.6deg;animation:floral-drift 10.5s ease-in-out .4s infinite}
-.hero-fl-r img{transform:scaleX(-1)}
 .hero-content{position:relative;padding:96px 20px 0}
 .bismillah{font-family:'Amiri',serif;font-weight:700;font-size:30px;line-height:1.9;color:#8A6526;direction:rtl;white-space:nowrap}
 .bismillah-reveal{display:inline-block;will-change:clip-path, opacity, filter}
@@ -373,7 +369,6 @@ section{position:relative;padding:0 28px;overflow-x:clip}
 @media (max-width: 390px){
   .gate-fl-tl,.gate-fl-tr{width:138px}
   .gate-fl-bl,.gate-fl-br{width:148px}
-  .hero-fl-l,.hero-fl-r{width:112px}
   .bloom-l,.bloom-r{width:124px}
   .details-fl-l,.details-fl-r,.dua-fl-l,.dua-fl-r{width:118px}
 }
@@ -494,8 +489,6 @@ section{position:relative;padding:0 28px;overflow-x:clip}
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <div class="floral-piece hero-floral hero-fl-l" aria-hidden="true"><img src="public/3.svg" alt=""></div>
-      <div class="floral-piece hero-floral hero-fl-r" aria-hidden="true"><img src="public/4.svg" alt=""></div>
       <svg class="arch" viewBox="0 0 360 600" fill="none" aria-hidden="true">
         <path class="arch-line" d="M30 600 V230 C30 130 72 88 122 64 C152 50 168 42 180 18 C192 42 208 50 238 64 C288 88 330 130 330 230 V600 Z" stroke="currentColor" stroke-width="1.5"/>
         <path class="arch-line" d="M42 600 V234 C42 142 80 100 128 76 C156 62 170 54 180 34 C190 54 204 62 232 76 C280 100 318 142 318 234 V600 Z" stroke="currentColor" stroke-width=".7" opacity=".5"/>
